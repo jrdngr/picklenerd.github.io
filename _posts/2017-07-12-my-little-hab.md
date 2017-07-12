@@ -22,9 +22,11 @@ The overall goal here is to build a system that lets me build systems.  I like w
 
 Since Parasites leave behind empty space as they die from overpopulation and since Parasites can't spread into empty space, they end up spreading out into a ring.  These rings will occasionally have thin enough walls that a plant can slip inside.  Since the Plant spreads faster than the Parasite, it starts growing inside the ring.  This gives the inner Parasites something to eat, so they start following the Plants.  This turns into a neat animation in the middle of the ring.  I like think of it as a farm that the Parasites are building to feed themselves.
 
-![parasites](../images/mlh1.gif)
+![parasites][img-parasites]
 
 
 
 [mlh]: http://picklenerd.com/mylittlehab/
 [mlh-github]: https://github.com/picklenerd/my-little-habitat
+
+[img-parasites]: https://picklenerd.github.io/images/mlh1.gif
