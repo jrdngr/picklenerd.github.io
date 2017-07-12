@@ -3,7 +3,6 @@ layout: post
 title:  "Learning Rust: Intro"
 date:   2017-07-11 21:56:00 -0400
 categories: learning-rust
-tags: rust my-little-habitat
 ---
 I have this little [pet project][my-little-habitat] that I've been thinking about for years.  I finally started working on it a few months ago, first in plain Javascript, then in Typescript.  Once the basics were in place, it seemed pretty unlikely that a web browser was going to be able to handle everything I wanted to do.
 
@@ -22,9 +21,9 @@ pub enum Property {
 }
 
 pub struct Creature {
-    ...
+    //...
     pub properties: HashMap<String, Property>,
-    ...
+    //...
 }
 {% endhighlight %}
 
