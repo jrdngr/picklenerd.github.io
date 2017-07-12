@@ -24,7 +24,7 @@ Since Parasites leave behind empty space as they die from overpopulation and sin
 
 ![parasites][img-parasites]
 
-This little farm gives Parasites a renewable food source and makes it possible for more Parasites to exist at one time.  They also tend to be isolated in the middle of a bunch of empty space.  Since Herbivores can only eat Plants and die without food, it's very difficult for them to reach these Parasite farms.  So not only are the Parasites growning their own food, but their food source is well protected against rival species.
+This little farm gives Parasites a renewable food source and makes it possible for more Parasites to exist at one time.  They also tend to be isolated in the middle of a bunch of empty space.  Since Herbivores can only eat Plants and die without food, it's very difficult for them to reach these Parasite farms.  So not only are the Parasites growing their own food, but their food source is well protected against rival species.
 
 And that all just happened.  Nothing was designed to work that way.  You can see just how successful this Parasite farming behavior is over long periods of time.  Using the [web version][mlh], put down a Plant in the middle of the grid, then put a Parasite in the middle of the growing Plant blob.  Once the farm starts forming, place an Herbivore (or a bunch) around the outside of the ring.  Then just let it go.  The Herbivores will cause the ring to break, but the farms keep going and the Herbivores can't survive in the middle of the grid, while the Parasites dominate it.  Cool!
 
