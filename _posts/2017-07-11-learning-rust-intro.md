@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Learning Rust: Intro"
+title:  "Learning Rust 1: Intro"
 date:   2017-07-11 21:56:00 -0400
 categories: learning-rust
 ---
