@@ -18,4 +18,6 @@ Originally, I was going to give `vulkano` a shot because the author is making so
 
 Instead, I'm going with `gfx-rs`.  Hopefully I can get it to be fast enough that I can put off doing any difficult optimization until much later.
 
+**Update:** I just did my first build with full compiler optimizations and it's blazing fast.  Good to know!
+
 [iter-docs]: https://doc.rust-lang.org/std/iter/
