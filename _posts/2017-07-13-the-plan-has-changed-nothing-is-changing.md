@@ -15,3 +15,22 @@ Adding these extra pieces of information to the function meant that I also had t
 So now I'm reconsidering the structure of the creatures.  I tried trait objects again, but I ran into the same problems trying to fit them into some of my other code, and I'm also not thrilled about this dynamic dispatch business that I've been reading about.
 
 For the time being, I'm going to stick with the struct and try to be a little more clever about how I pass things around.  I also think it's time to ask for advice.  Like from a human.
+
+**Update:**
+Given that I already had this act method wrapping the internal function, this was a 5 second fix.  I didn't even get to be clever, but at least I can put off talking to a human for a little while longer.
+
+{% highlight rust %}
+{
+pub struct Creature {
+    pub creature_type: CreatureType,
+    pub color: Color,
+    pub properties: HashMap<String, Property>,
+    action: fn(&Creature, &Neighbors) -> Vec<Action>,
+}
+
+impl Creature {
+    pub fn act(&self, neighbors: &Neighbors) -> Vec<Action> {
+        (self.action)(self, neighbors)
+    }
+}
+{% endhighlight %}
