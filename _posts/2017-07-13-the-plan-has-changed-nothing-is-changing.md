@@ -20,7 +20,6 @@ For the time being, I'm going to stick with the struct and try to be a little mo
 Given that I already had this act method wrapping the internal function, this was a 5 second fix.  I didn't even get to be clever, but at least I can put off talking to a human for a little while longer.
 
 {% highlight rust %}
-{
 pub struct Creature {
     pub creature_type: CreatureType,
     pub color: Color,
