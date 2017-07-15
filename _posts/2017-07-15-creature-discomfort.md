@@ -70,7 +70,7 @@ pub enum Property {
 }
 {% endhighlight %}
 
-Changing from HashMap<String, Property> to HashMap<String, f64> would make it much easier to deal with property values, and it would pretty much cover every case except for `Text` which I probably don't even need.
+Changing `properties` from `HashMap<String, Property>` to `HashMap<String, f64>` would make it much easier to deal with property values, and it would pretty much cover every case except for `Text` which I probably don't even need.
 
 In other news, I made my own struct for the turn queue that uses a HashSet to track duplicate entries.  Now it'll ignore any `push` that contains a value that's already in the queue.  Works like magic and everything is still lightning fast. Hooray!
 
@@ -82,4 +82,5 @@ pub struct TurnQueue {
 {% endhighlight %}
 
 **Next up:**
+
 Adding a ground layer.  This will be for stuff like plants that creatures can walk on top of without taking their space.  This feature is the main reason I'm so concerned about performance since it's going to double the size of my grid.  It should be cool though.  It'll behave just like the existing layer so I'll basically have two simulations going at once.  One to determine the landscape and one to determine the action that happens on top of that landscape.
