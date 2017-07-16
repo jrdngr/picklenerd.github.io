@@ -84,3 +84,9 @@ pub struct TurnQueue {
 **Next up:**
 
 Adding a ground layer.  This will be for stuff like plants that creatures can walk on top of without taking their space.  This feature is the main reason I'm so concerned about performance since it's going to double the size of my grid.  It should be cool though.  It'll behave just like the existing layer so I'll basically have two simulations going at once.  One to determine the landscape and one to determine the action that happens on top of that landscape.
+
+Here's a pretty picture.
+
+![pretty-picture][img-purdy]
+
+[img-purdy]: https://picklenerd.github.io/images/mlh3.gif
