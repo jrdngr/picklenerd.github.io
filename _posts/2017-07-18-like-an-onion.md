@@ -10,7 +10,6 @@ Instead, grid cells now have layers.  Each cell has a `u8` to `Organism` map rep
 
 The additions were easy.  The modifications are a bit trickier.  Anything that accesses a cell now needs to specify a layer, and there's a lot of code that accesses cells.  Most of the ugliness will be abstracted over at the organism level, but rewriting the main loop and the rest of the backend is taking a while.
 
-<<<<<<< HEAD
 I haven't learned much about Rust while working on my project over the past couple days.  I'm more familiar with `HashMap` and read up on `BTreeMap`, but I'm mostly just restructuring.  I'm starting to feel pretty nimble with the language now.  I really only bump into two things with any frequency.
 
 The first is just not knowing the interfaces of things in the standard library.  For example, when I'm calling `get` on a HashMap, the key argument is supposed to be a reference.  These sorts of things happen often enough that I can usually fix them right when RLS calls them out.
@@ -21,6 +20,3 @@ I also started reading the [Rustonomicon][rustonomicon] this week.  I don't thin
 
 
 [rustonomicon][https://doc.rust-lang.org/nomicon/]  
-=======
-Short post today, but I should have some cool results soon!
->>>>>>> 40be2ba28a8abdfdf9b1d27c81a6a6f46448587b
