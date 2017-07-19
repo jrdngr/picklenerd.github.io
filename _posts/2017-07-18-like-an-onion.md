@@ -19,4 +19,4 @@ The second is nested method calls.  I think that's what you'd call them.  Callin
 I also started reading the [Rustonomicon][rustonomicon] this week.  I don't think I'll be writing any unsafe code for this project, but there are a lot of interesting details about the language in there.  Plus the intro said that there would be type theory so I really couldn't stop myself.
 
 
-[rustonomicon][https://doc.rust-lang.org/nomicon/]  
+[rustonomicon]: https://doc.rust-lang.org/nomicon/
