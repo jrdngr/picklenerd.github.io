@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 4: Iterator Quest"
-date:   2017-07-12 22:00:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 4: Iterator Quest"
+date = 2017-07-12
++++
+
 Today I was going to write a proper iterator for my grid.  After rereading the [documentation for iterators][iter-docs], I was feeling pretty confident.  I wrote myself a nice little iterator that wrapped the regular `Vec` iterator.  Worked like a charm.  I think the reason I was struggling so much before is because of the things I was trying to do within the `for` loop, not the loop itself.
 
 Of course once I was ready to use my new iterator, I realized that the queue system I use for grid updates completely circumvents the need to loop over each cell's creature.

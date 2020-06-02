@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 3: The First Two Weeks"
-date:   2017-07-12 19:00:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 3: The First Two Weeks"
+date =  2017-07-12
++++
+
 I intended to write about my experience learning Rust from the beginning, but I was too obsessed with writing the code to stop.  I'm going to try to recap the past two weeks below.  It's long, so here are my main takeaways from this process.
 
 1. The [second edition of the book][rust-second-ed] is fantastic.

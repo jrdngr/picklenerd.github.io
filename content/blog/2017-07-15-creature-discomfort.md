@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 6: Creature Discomfort"
-date:   2017-07-15 15:00:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 6: Creature Discomfort"
+date =  2017-07-15
++++
+
 I'm finally settling into a creature design.  I've tried several other setups, but I still like having a generic creature struct with a function pointer for behavior.  It fits well with the two roles that a creature has to fill, storing information about its state, and determining what to do next time it gets a turn.  Any properties specific to that creature are stored in its `properties` HashMap.
 
 This is how the plant is currently defined.

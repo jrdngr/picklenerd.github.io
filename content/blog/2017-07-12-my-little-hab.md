@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 2: The Project"
-date:   2017-07-12 08:25:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 2: The Project"
+date =  2017-07-12
++++
+
 The project I'm building in Rust is something I've been wanting to make for a long time.  It's a graphical grid-based life simulator.  You can play with the most recent web version [here][mlh].  Pick a creature on the right and draw with it in the box on the left.
 
 I started with a web version so that it could be widely accessible and people definitely seem to enjoy the early versions, but I'm already running into performance issues and there are a lot of features that I'd like to implement that will bog it down even more, which is why I'm focusing on the [Rust version][mlh-github] first.  I'd like to port what I can back to the web eventually.

@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 10: Learned Rust"
-date:   2017-08-21 23:00:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 10: Learned Rust"
+date =  2017-08-21
++++
+
 I took a break from this for a few days.  After having the brilliant idea to rip my systems apart after rebuilding them for the 4th time, I had the even more brilliant idea to undo all of that ripping and go back to when it still compiled.  At some point, I'll have to write something new instead of writing the same thing over and over.
 
 So here I am, two months after deciding to tackle Rust and port over my main project.  I'm feeling pretty confident with Rust at this point, and it has basically poisoned every other part of my life.  My Java code at work is changing, I check the subreddit and forums multiple times every day, and I can't even open Unity anymore without feeling like I'm in the wrong place.

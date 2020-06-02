@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 7: Like an Onion"
-date:   2017-07-18 22:00:00 -0400
-categories: learning-rust
----
++++
+title =  "Learning Rust 7: Like an Onion"
+date =  2017-07-18
++++
+
 I started implementing separate layers for the ground and the creatures that walk on top of the ground.  It was a little too specialized and awkward to work with.
 
 Instead, grid cells now have layers.  Each cell has a `u8` to `Organism` map representing each layer and the organism that occupies it.  The `get_color` method now returns the color of the topmost layer, and the ColorEnumerator automatically works correctly because it was already using get_color.

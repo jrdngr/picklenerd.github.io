@@ -1,9 +1,8 @@
----
-layout: post
-title:  "Learning Rust 5: The Plan Has Changed.  Nothing is Changing."
-date:   2017-07-13 22:30:00 -0400
-categories: learning-rust
----
++++
+title = "Learning Rust 5: The Plan Has Changed.  Nothing is Changing."
+date =  2017-07-13
++++
+
 Last night the slowness of my program got to me.  As part of my attempt to speed up rendering, I decided that I'd switch out `piston` for `gfx-rs` early and just do everything directly.  This would probably be a bit slower in the near-term since I don't know what I'm doing, but it would probably be faster in the future since I wouldn't have any overhead from stuff in `piston` that I'm not taking advantage of.
 
 Then I remembered that I can change the optimization level of the compiler.  Since I hadn't done it yet, I maxed it out and ran the program.  It's incredibly fast.  So fast that I'll have to slow everything down to make it look pretty again.  This shouldn't really be a surprise considering how simple this program is at the moment.  I was actually starting to feel disappointed that Rust wasn't helping my performace at all.  Now I'm absolutely thrilled that I managed to get things running in Rust.  This is going to be so awesome.
