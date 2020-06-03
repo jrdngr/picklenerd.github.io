@@ -1,6 +1,9 @@
 +++
 title = "Learning Rust 9: Evolution"
-date = 2017-08-15
+date =  2017-08-15T08:00:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 This project has been progressing slowly for the past few weeks.  I was losing motivations quickly as this is the fourth or fifth time that I've re-written this same system.  As of Sunday, it finally worked again, and I had my plan rewritten.  Layers are good, grid mutation is good, actions are good.
@@ -9,7 +12,7 @@ Then I realized that the evolution system that I'm working toward probably won't
 
 I decided that grid management should be a trait instead of a struct since this overall grid construct is pretty reusable.
 
-{% highlight rust %}
+```rust
 pub trait GridManager: IntoIterator {
     type GridCellType;
     fn get_cell(&self, x: u32, y: u32) -> &Self::GridCellType;
@@ -17,7 +20,7 @@ pub trait GridManager: IntoIterator {
     fn get_color(&self) -> [f32; 4];
     fn update(&mut self);
 }
-{% endhighlight %}
+```
 
 Now all of my grid management code is part of OrganismGridManager which implements this trait.  This is a pretty huge change, but I think it should have worked like this from the start.  Working through the process of rewriting exposed some of the areas where strong coupling between systems made everything a pain to change. 
 

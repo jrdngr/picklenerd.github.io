@@ -1,6 +1,9 @@
 +++
 title = "Learning Rust 3: The First Two Weeks"
-date =  2017-07-12
+date =  2017-07-12T19:00:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 I intended to write about my experience learning Rust from the beginning, but I was too obsessed with writing the code to stop.  I'm going to try to recap the past two weeks below.  It's long, so here are my main takeaways from this process.
@@ -27,7 +30,7 @@ This broke in many ways.  Looping over the grid cells borrowed the grid.  This m
 
 Creatures became a `struct` with a function pointer for the behavior and a map for individual unique properties.
 
-{% highlight rust %}
+```rust
 pub enum Property {
     Integer(i64),
     Decimal(f64),
@@ -41,13 +44,13 @@ pub struct Creature {
     pub properties: HashMap<String, Property>,
     action: fn(&Neighbors) -> Vec<Action>,
 }
-{% endhighlight %}
+```
 
 Now my grid was just a `Vec<Creature>` rather than `Vec<Box<Creature>>`, and it became significantly easier to work with.  I still had trouble with my loops though, and nested borrows of the same object were the culprit.
 
 It didn't make much logical sense for an individual creature to have the power to change the whole grid.  Since creating new creature types was supposed to be easy, having a fixed set of general grid operations would solve my problem in addition to simplifying creature logic.
 
-{% highlight rust %}
+```rust
 pub enum Action {
     Set(Position, Creature),
     Clear(Position),
@@ -55,7 +58,7 @@ pub enum Action {
     QueueNeighbors,
     Idle,
 }
-{% endhighlight %}
+```
 
 Now I could return a list of messages and feed those into the grid way back in the update loop.  This worked perfectly. This also worked around another problem I was having, which was iterating over the grid cells.  Since the grid really just wraps a `Vec<Creature>` with some methods to calculate 2D indices, I tried to build an iterator that essentially wrapped the `Vec` iterator.  This ended up being a bit of a pain, so I am temporarily looping over indices and pulling the cells from the grid data directly to access their contents.
 

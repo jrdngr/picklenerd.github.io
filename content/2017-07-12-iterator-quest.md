@@ -1,6 +1,9 @@
 +++
 title = "Learning Rust 4: Iterator Quest"
-date = 2017-07-12
+date = 2017-07-12T22:00:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 Today I was going to write a proper iterator for my grid.  After rereading the [documentation for iterators][iter-docs], I was feeling pretty confident.  I wrote myself a nice little iterator that wrapped the regular `Vec` iterator.  Worked like a charm.  I think the reason I was struggling so much before is because of the things I was trying to do within the `for` loop, not the loop itself.

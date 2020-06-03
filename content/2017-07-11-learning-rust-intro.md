@@ -1,6 +1,9 @@
 +++
 title =  "Learning Rust 1: Intro"
-date =  2017-07-11
+date =  2017-07-11T21:56:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 I have this little [pet project][my-little-habitat] that I've been thinking about for years.  I finally started working on it a few months ago, first in plain Javascript, then in Typescript.  Once the basics were in place, it seemed pretty unlikely that a web browser was going to be able to handle everything I wanted to do.

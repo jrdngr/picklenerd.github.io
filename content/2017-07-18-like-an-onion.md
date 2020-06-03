@@ -1,6 +1,9 @@
 +++
 title =  "Learning Rust 7: Like an Onion"
-date =  2017-07-18
+date =  2017-07-18T22:00:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 I started implementing separate layers for the ground and the creatures that walk on top of the ground.  It was a little too specialized and awkward to work with.

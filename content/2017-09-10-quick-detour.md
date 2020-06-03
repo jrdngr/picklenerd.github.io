@@ -1,6 +1,6 @@
 +++
 title = "A Quick C# Detour"
-date = 2017-09-10
+date = 2017-09-10T22:00:00-04:00
 +++
 
 I'm (slowly) learning how to digitally paint and in the process (very slowly) learning how to draw.  I've tried a bunch of different resources, but I've settled on [Proko's Figure Drawing][proko] course for the time being.  The course starts with gesture drawing and both Stan and his critique guest Marshall make a lot of comments about the massive number of gesture drawings a person needs to do before becoming good at them.  To make it as easy as possible, I tried out a bunch of slideshow programs to push me through 30-second quick sketches without me having to think too hard about timers and all that.  There really aren't any great options.  Everything is passable.

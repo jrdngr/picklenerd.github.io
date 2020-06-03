@@ -1,6 +1,9 @@
 +++
 title = "Learning Rust 5: The Plan Has Changed.  Nothing is Changing."
-date =  2017-07-13
+date =  2017-07-13T22:30:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 Last night the slowness of my program got to me.  As part of my attempt to speed up rendering, I decided that I'd switch out `piston` for `gfx-rs` early and just do everything directly.  This would probably be a bit slower in the near-term since I don't know what I'm doing, but it would probably be faster in the future since I wouldn't have any overhead from stuff in `piston` that I'm not taking advantage of.
@@ -18,7 +21,7 @@ For the time being, I'm going to stick with the struct and try to be a little mo
 **Update:**
 Given that I already had this act method wrapping the internal function, this was a 5 second fix.  I didn't even get to be clever, but at least I can put off talking to a human for a little while longer.
 
-{% highlight rust %}
+```rust
 pub struct Creature {
     pub creature_type: CreatureType,
     pub color: Color,
@@ -31,4 +34,4 @@ impl Creature {
         (self.action)(self, neighbors)
     }
 }
-{% endhighlight %}
+```

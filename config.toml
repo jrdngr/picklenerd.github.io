@@ -11,5 +11,23 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+theme = "zulma"
+
+title = "picklenerd"
+
+taxonomies = [
+    {name = "categories"},
+    {name = "tags", paginate_by = 5, feed = true},
+]
+
 [extra]
 # Put all your custom variables here
+
+zulma_menu = [
+    {url = "$BASE_URL/tags", name = "Tags"},
+]
+
+zulma_theme = "darkly"
+zulma_allow_theme_selection = true
+
+zulma_title = "Picklenerd Blog"

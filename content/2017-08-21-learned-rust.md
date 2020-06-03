@@ -1,6 +1,9 @@
 +++
 title = "Learning Rust 10: Learned Rust"
-date =  2017-08-21
+date =  2017-08-21T23:00:00-04:00
+
+[taxonomies]
+tags = ["learning-rust"]
 +++
 
 I took a break from this for a few days.  After having the brilliant idea to rip my systems apart after rebuilding them for the 4th time, I had the even more brilliant idea to undo all of that ripping and go back to when it still compiled.  At some point, I'll have to write something new instead of writing the same thing over and over.
@@ -13,7 +16,7 @@ Other than that, I'm going to keep chugging along with my plans.  First, I need 
 
 For example, here's my current plant code:
 
-{% highlight rust %}
+```rust
 pub fn plant_action(grid_manager: &mut GridManager, (x, y): (u32, u32)) {
     if utils::random_percentage(95.0) {
          grid_manager.add_to_queue(x, y, LAYER);
@@ -34,13 +37,13 @@ pub fn plant_action(grid_manager: &mut GridManager, (x, y): (u32, u32)) {
         }
     }
 }
-{% endhighlight %}
+```
 
 I have this problem where getting a neighborhood takes an immutable reference to the manager, so I have to drop the reference before I can set the cell.  Then I do some other really awful things to compensate.  I didn't really think about this when I wrote it since I was at peak burnout.  I just wanted it to compile and look pretty when I ran it.
 
 Another thing that bugs me is this fake dynamic dispatch thing that I did.
 
-{% highlight rust %}
+```rust
 pub fn act(grid_manager: &mut GridManager, (x, y, layer): (u32, u32, u32)) {
     let mut cell_type = None;
     if let Some(cell) = grid_manager.get(x, y).borrow_mut().get_layer(layer) {
@@ -55,7 +58,7 @@ pub fn act(grid_manager: &mut GridManager, (x, y, layer): (u32, u32, u32)) {
         }
     }
 }
-{% endhighlight %}
+```
 
 After reading about static and dynamic dispatch, I ended up with this system rather than trait objects with their own act method because I wanted the performance.  Once I actually thought about it, I decided that this is probably just a slower version of regular dynamic dispatch.  Refactoring it into a trait object is kind of a pain so this is a pretty low priority, but it's still annoying and will be increasingly annoying as I add more creatures.
 
