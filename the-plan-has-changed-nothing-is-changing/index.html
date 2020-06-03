@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+        picklenerd
+    </title>
+
+    
+
+<link id="darkly" class="stylesheet" rel="stylesheet"
+    href="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;darkly.css" />
+
+
+    <!-- This script must follow css -->
+    
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_switchcss.js"></script>
+    <script>
+        switch_css.init("https://picklenerd.github.io");
+    </script>
+    
+
+    
+
+    
+    <script defer type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;elasticlunr.min.js"></script>
+    <script defer type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;search_index.en.js"></script>
+    
+
+    
+    
+
+    <noscript>
+        <style>
+            .navbar-menu {
+                display: block;
+            }
+
+            .js-only {
+                display: none;
+            }
+        </style>
+    </noscript>
+    
+</head>
+
+<body>
+    
+    
+<!-- START NAV -->
+
+
+    
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    
+                    
+                    
+                    <a itemprop="url"
+                        class="navbar-item "
+                        href="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;tags">
+                        <span itemprop="name">Tags
+                        </span>
+                    </a>
+                    
+                    
+
+                    
+                    <div class="navbar-item search-container js-only">
+                        <input class="input" id="search" type="search" placeholder="Search">
+
+                        <div class="search-results box">
+                            <div class="search-results__items"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+    
+
+<!-- END NAV -->
+<main>
+    <section class="container">
+        <div class="columns is-desktop">
+            <div class="column is-10-desktop is-offset-1-desktop">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <div class="card article">
+                        <div class="card-content">
+                            
+<header>
+    <div class="has-text-centered">
+        <a href="https://picklenerd.github.io/the-plan-has-changed-nothing-is-changing/">
+            <p class="title article-title">Learning Rust 5: The Plan Has Changed.  Nothing is Changing.
+            </p>
+        </a>
+        <div class="tags has-addons level-item">
+            <span class="tag is-rounded">2017-07-13</span>
+                       
+            <span class="tag is-rounded">
+<svg class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
+    stroke-linejoin="round" stroke-width="6.25%">
+    <circle cx="16" cy="16" r="14" />
+    <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>&nbsp;3 minute read</span>
+</span>
+        </div>
+    </div>
+</header>
+
+                            <div itemprop="articleBody" class="content article-body">
+                                <p>Last night the slowness of my program got to me.  As part of my attempt to speed up rendering, I decided that I'd switch out <code>piston</code> for <code>gfx-rs</code> early and just do everything directly.  This would probably be a bit slower in the near-term since I don't know what I'm doing, but it would probably be faster in the future since I wouldn't have any overhead from stuff in <code>piston</code> that I'm not taking advantage of.</p>
+<p>Then I remembered that I can change the optimization level of the compiler.  Since I hadn't done it yet, I maxed it out and ran the program.  It's incredibly fast.  So fast that I'll have to slow everything down to make it look pretty again.  This shouldn't really be a surprise considering how simple this program is at the moment.  I was actually starting to feel disappointed that Rust wasn't helping my performace at all.  Now I'm absolutely thrilled that I managed to get things running in Rust.  This is going to be so awesome.</p>
+<p>The other problem I ran into was some obnoxiously complicated code when I tried to add properties to my creatures.  Since creatures are implemented as a struct with a function pointer to their behavior, the behavior isn't a method.  Now I have to pass into the function any information about that creature that I want to use, even though conceptually this action is running on the creature.  <em>Now that I've typed this out, I can obviously just pass the creature struct instance.  Duh.</em></p>
+<p>Adding these extra pieces of information to the function meant that I also had to go in and edit all 6 creature files every single time I changed something.  Now part of this is my fault for getting ahead of myself and writing a bunch of creatures, and I think I can just tell the compiler to ignore them.  On the other hand, adding new creatures is supposed to be relatively easy.  That's a primary design goal that's not changing.</p>
+<p>So now I'm reconsidering the structure of the creatures.  I tried trait objects again, but I ran into the same problems trying to fit them into some of my other code, and I'm also not thrilled about this dynamic dispatch business that I've been reading about.</p>
+<p>For the time being, I'm going to stick with the struct and try to be a little more clever about how I pass things around.  I also think it's time to ask for advice.  Like from a human.</p>
+<p><strong>Update:</strong>
+Given that I already had this act method wrapping the internal function, this was a 5 second fix.  I didn't even get to be clever, but at least I can put off talking to a human for a little while longer.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">Creature {
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">creature_type</span><span style="color:#c0c5ce;">: CreatureType,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">color</span><span style="color:#c0c5ce;">: Color,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">properties</span><span style="color:#c0c5ce;">: HashMap&lt;String, Property&gt;,
+    </span><span style="color:#bf616a;">action</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">fn</span><span style="color:#c0c5ce;">(&amp;Creature, &amp;Neighbors) -&gt; Vec&lt;Action&gt;,
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">Creature {
+    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">act</span><span style="color:#c0c5ce;">(&amp;</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">neighbors</span><span style="color:#c0c5ce;">: &amp;Neighbors) -&gt; Vec&lt;Action&gt; {
+        (</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">.action)(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, neighbors)
+    }
+}
+</span></code></pre>
+                            </div>
+                        </div>
+                        
+                        
+<footer class="card-footer">
+    <div class="article-footer">
+        <div class="columns is-multiline">
+            <div class="column is-12">
+                <p>
+                    Published
+                    
+
+<time datetime="2017-07-13">
+    2017-07-13
+</time>
+
+
+                    
+
+
+                    
+
+
+                    
+
+and tagged
+
+<a href="https://picklenerd.github.io/tags/learning-rust/">
+    <span class="tag is-link">learning-rust </span>
+</a>
+
+
+
+
+                </p>
+            </div>
+            <div class="column">
+                <a class="button is-pulled-right is-info" href="/">Back Home</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+                        
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+    
+    
+
+<footer class="footer js-only">
+    <div class="columns">
+        <div class="column">
+            <div class="content is-flex">
+                <div class="theme-select-container">
+                    Theme:
+                    <select id="theme-select">
+                        
+                        
+                        
+                        
+                        
+                        <option value="default">default</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option selected="selected" value="darkly">darkly</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="flatly">flatly</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="pulse">pulse</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="simplex">simplex</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="lux">lux</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="slate">slate</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="solar">solar</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="superhero">superhero</option>
+                        
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_navbar.js"></script>
+
+    
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_search.js"></script>
+    
+
+    
+</body>
+
+</html>
