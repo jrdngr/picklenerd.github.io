@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+        picklenerd
+    </title>
+
+    
+
+<link id="darkly" class="stylesheet" rel="stylesheet"
+    href="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;darkly.css" />
+
+
+    <!-- This script must follow css -->
+    
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_switchcss.js"></script>
+    <script>
+        switch_css.init("https://picklenerd.github.io");
+    </script>
+    
+
+    
+
+    
+    <script defer type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;elasticlunr.min.js"></script>
+    <script defer type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;search_index.en.js"></script>
+    
+
+    
+    
+
+    <noscript>
+        <style>
+            .navbar-menu {
+                display: block;
+            }
+
+            .js-only {
+                display: none;
+            }
+        </style>
+    </noscript>
+    
+</head>
+
+<body>
+    
+    
+<!-- START NAV -->
+
+
+    
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    
+                    
+                    
+                    <a itemprop="url"
+                        class="navbar-item "
+                        href="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;tags">
+                        <span itemprop="name">Tags
+                        </span>
+                    </a>
+                    
+                    
+
+                    
+                    <div class="navbar-item search-container js-only">
+                        <input class="input" id="search" type="search" placeholder="Search">
+
+                        <div class="search-results box">
+                            <div class="search-results__items"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+    
+
+<!-- END NAV -->
+<main>
+    <section class="container">
+        <div class="columns is-desktop">
+            <div class="column is-10-desktop is-offset-1-desktop">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <div class="card article">
+                        <div class="card-content">
+                            
+<header>
+    <div class="has-text-centered">
+        <a href="https://picklenerd.github.io/my-little-hab/">
+            <p class="title article-title">Learning Rust 2: The Project
+            </p>
+        </a>
+        <div class="tags has-addons level-item">
+            <span class="tag is-rounded">2017-07-12</span>
+                       
+            <span class="tag is-rounded">
+<svg class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
+    stroke-linejoin="round" stroke-width="6.25%">
+    <circle cx="16" cy="16" r="14" />
+    <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>&nbsp;4 minute read</span>
+</span>
+        </div>
+    </div>
+</header>
+
+                            <div itemprop="articleBody" class="content article-body">
+                                <p>The project I'm building in Rust is something I've been wanting to make for a long time.  It's a graphical grid-based life simulator.  You can play with the most recent web version <a href="http://picklenerd.com/mylittlehab/">here</a>.  Pick a creature on the right and draw with it in the box on the left.</p>
+<p>I started with a web version so that it could be widely accessible and people definitely seem to enjoy the early versions, but I'm already running into performance issues and there are a lot of features that I'd like to implement that will bog it down even more, which is why I'm focusing on the <a href="https://github.com/picklenerd/my-little-habitat">Rust version</a> first.  I'd like to port what I can back to the web eventually.</p>
+<p>Some of the features that will eventually be added are:</p>
+<ul>
+<li>Variable properties that are used in creature behaviors.  Some of these will have associated energy/unit costs and will vary slightly between generations so that creatures can evolve.</li>
+<li>The ability to inspect a single creature to see its properties and other stats.</li>
+<li>Customizable creatures along with a small scripting language to define their behaviors.</li>
+<li>A ground layer that follows the same rules.  This would allow dynamic environments to form and could shape creature behavior in interesting ways.</li>
+<li>Speed controls, possibly including the ability to reverse time.</li>
+</ul>
+<p>Some of these features will also migrate to the Typescript version in the future, and customized creatures will be determined by a common text format that will be portable between the two systems.</p>
+<p>The overall goal here is to build a system that lets me build systems.  I like watching complex group behavior develop out of simple individual behaviors.  My favorite example is the Parasite creature in the <a href="http://picklenerd.com/mylittlehab/">web version</a>.  Their logic is similar to Plant logic with a few small changes.  Plants will simply spread into nearby empty spaces if there are any available.  Parasites will spread into nearby Plant spaces if they're available.  The only differences are that Parasites spread a bit more slowly than plants, and Parasites have neighborhood population limits.  If a Parasite has more than 4 Parasite neighbors, they'll start to die.</p>
+<p>Since Parasites leave behind empty space as they die from overpopulation and since Parasites can't spread into empty space, they end up spreading out into a ring.  These rings will occasionally have thin enough walls that a plant can slip inside.  Since the Plant spreads faster than the Parasite, it starts growing inside the ring.  This gives the inner Parasites something to eat, so they start following the Plants.  This turns into a neat animation in the middle of the ring.  I like to think of it as a farm that the Parasites are building to feed themselves.</p>
+<p>![parasites][https://picklenerd.github.io/static/images/mlh2.gif]</p>
+<p>This little farm gives Parasites a renewable food source and makes it possible for more Parasites to exist at one time.  They also tend to be isolated in the middle of a bunch of empty space.  Since Herbivores can only eat Plants and die without food, it's very difficult for them to reach these Parasite farms.  So not only are the Parasites growing their own food, but their food source is well protected against rival species.</p>
+<p>And that all just happened.  Nothing was designed to work that way.  You can see just how successful this Parasite farming behavior is over long periods of time.  Using the <a href="http://picklenerd.com/mylittlehab/">web version</a>, put down a Plant in the middle of the grid, then put a Parasite in the middle of the growing Plant blob.  Once the farm starts forming, place an Herbivore (or a bunch) around the outside of the ring.  Then just let it go.  The Herbivores will cause the ring to break, but the farms keep going and the Herbivores can't survive in the middle of the grid, while the Parasites dominate it.  Cool!</p>
+<p>![parasites][https://picklenerd.github.io/static/images/mlh1.gif]</p>
+
+                            </div>
+                        </div>
+                        
+                        
+<footer class="card-footer">
+    <div class="article-footer">
+        <div class="columns is-multiline">
+            <div class="column is-12">
+                <p>
+                    Published
+                    
+
+<time datetime="2017-07-12">
+    2017-07-12
+</time>
+
+
+                    
+
+
+                    
+
+
+                    
+
+and tagged
+
+<a href="https://picklenerd.github.io/tags/learning-rust/">
+    <span class="tag is-link">learning-rust </span>
+</a>
+
+
+
+
+                </p>
+            </div>
+            <div class="column">
+                <a class="button is-pulled-right is-info" href="/">Back Home</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+                        
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+    
+    
+
+<footer class="footer js-only">
+    <div class="columns">
+        <div class="column">
+            <div class="content is-flex">
+                <div class="theme-select-container">
+                    Theme:
+                    <select id="theme-select">
+                        
+                        
+                        
+                        
+                        
+                        <option value="default">default</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option selected="selected" value="darkly">darkly</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="flatly">flatly</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="pulse">pulse</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="simplex">simplex</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="lux">lux</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="slate">slate</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="solar">solar</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <option value="superhero">superhero</option>
+                        
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    
+
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_navbar.js"></script>
+
+    
+    <script type="text/javascript" src="https:&#x2F;&#x2F;picklenerd.github.io&#x2F;js&#x2F;zulma_search.js"></script>
+    
+
+    
+</body>
+
+</html>
